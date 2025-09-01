@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Text Colors */
+  --text-primary: #171717;    /* neutral-900 */
+  --text-secondary: #525252;  /* neutral-600 */
+  --text-disabled: #a3a3a3;   /* neutral-400 */
+  
+  /* Button Colors */
+  --button-primary: #2563eb;  /* blue-600 */
+  --button-hover: #1d4ed8;    /* blue-700 */
+  --button-disabled: #d4d4d4; /* neutral-300 */
+  
+  /* Background Colors */
+  --bg-main: #ffffff;         /* white */
+  --bg-secondary: #f9fafb;    /* gray-50 */
+  --bg-card: #ffffff;         /* white */
+  --bg-hover: #eff6ff;        /* blue-50 */
+  
+  /* Border Colors */
+  --border-default: #e5e7eb;  /* gray-200 */
+  --border-focus: #93c5fd;    /* blue-300 */
+  --border-error: #ef4444;    /* red-500 */
+  
+  /* Interactive Colors */
+  --link: #2563eb;           /* blue-600 */
+  --link-hover: #1d4ed8;     /* blue-700 */
+  --error: #dc2626;          /* red-600 */
+  
+  /* Accent Red Colors */
+  --destructive: #dc2626;  /* red-600 */
+  --destructive-hover: #b91c1c;  /* red-700 */
+  
+  /* System Colors */
+  --primary-foreground: #ffffff;
+  --secondary-foreground: var(--text-dark);
+  --accent-foreground: var(--text);
+  --foreground: var(--text);
+  --card: var(--background);
+  --card-foreground: var(--text);
+  --input: var(--border);
+  --ring: var(--primary);
+  --radius: 0.5rem;
+
+  /* Sidebar variables */
+  --sidebar-background: var(--primary);
+  --sidebar-foreground: var(--primary-foreground);
+  --sidebar-primary: var(--primary-light);
+  --sidebar-primary-foreground: var(--text-dark);
+  --sidebar-accent: var(--background-subtle);
+  --sidebar-accent-foreground: var(--text);
+  --sidebar-border: var(--primary-hover);
+  --sidebar-ring: var(--primary-light);
+}
+
+.dark {
+  /* Dark theme adjustments */
+  --background: #111827;  /* gray-900 */
+  --background-subtle: #1f2937;  /* gray-800 */
+  --border: #374151;  /* gray-700 */
+  --disabled: #4b5563;  /* gray-600 */
+  --text: #e5e7eb;  /* gray-200 */
+  --text-hover: #f3f4f6;  /* gray-100 */
+  --text-dark: #f9fafb;  /* gray-50 */
+  
+  /* Primary colors in dark mode */
+  --primary: #3b82f6;  /* blue-500 - brighter for dark mode */
+  --primary-hover: #2563eb;  /* blue-600 */
+  --primary-bg: #1e3a8a;  /* blue-900 */
+  --primary-dark: #93c5fd;  /* blue-300 */
+  --primary-light: #60a5fa;  /* blue-400 */
+  
+  /* System colors in dark mode */
+  --primary-foreground: var(--text-dark);
+  --card: var(--background-subtle);
+  --card-foreground: var(--text);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .immi-bg-primary {
+    background-color: var(--blue-600);
+  }
+
+  .immi-bg-secondary {
+    background-color: var(--gray-50);
+  }
+
+  .immi-text-primary {
+    color: var(--blue-600);
+  }
+
+  .immi-text-secondary {
+    color: var(--gray-600);
+  }
+
+  .immi-card {
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background-color: white;
+    border: 1px solid var(--gray-200);
+  }
+
+  .immi-button-primary {
+    background-color: var(--blue-600);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+  }
+  .immi-button-primary:hover {
+    background-color: var(--blue-700);
+  }
+
+  .immi-button-secondary {
+    background-color: white;
+    color: var(--gray-600);
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--gray-200);
+    transition: all 0.2s;
+  }
+  .immi-button-secondary:hover {
+    background-color: var(--gray-50);
+    color: var(--gray-800);
+  }
+
+  .immi-input {
+    border-radius: 9999px;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--gray-200);
+    width: 100%;
+    background-color: white;
+    color: var(--gray-900);
+    transition: all 0.2s;
+  }
+  .immi-input:focus {
+    outline: none;
+    border-color: var(--blue-600);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+}

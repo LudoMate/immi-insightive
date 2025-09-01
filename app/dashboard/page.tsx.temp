@@ -1,0 +1,56 @@
+"use client"
+
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { DashboardLayout } from "@/components/dashboard-layout"
+import { 
+  Briefcase, 
+  FileText, 
+  Plane, 
+  MessageSquare, 
+  Upload,
+  ArrowRight,
+  Clock,
+  CheckCircle2,
+  AlertCircle,
+  Bell,
+  Calendar,
+  ChevronRight,
+  BarChart
+} from "lucide-react"
+
+function DashboardPage() {
+  return (
+    <DashboardLayout>
+      <div className="min-h-screen bg-gray-50">
+        <div className="container max-w-7xl mx-auto px-6 py-8">
+          {/* Welcome Section with Overview */}
+          <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome back, Francois!</h1>
+              <p className="text-gray-600">Here's an overview of your immigration journey</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <Link href="/document-reminders">
+                <Button variant="outline" className="bg-white">
+                  <Bell className="h-4 w-4 mr-2" />
+                  2 Document Reminders
+                </Button>
+              </Link>
+              <Link href="/notifications">
+                <Button className="bg-[#0066FF] hover:bg-[#0066FF]/90">
+                  <Bell className="h-4 w-4 mr-2" />
+                  3 New Updates
+                </Button>
+              </Link>
+            </div>
+          </div>
+          {/* Rest of the content... */}
+        </div>
+      </div>
+    </DashboardLayout>
+  )
+}
+
+export default DashboardPage
