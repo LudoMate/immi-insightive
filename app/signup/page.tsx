@@ -19,7 +19,7 @@ export default function SignupPage() {
         <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
           <div className="w-full max-w-md space-y-8">
             <div className="text-center">
-              <h1 className="text-3xl font-bold text-[#0B1120] mb-2">Join Immi Insightive</h1>
+              <h1 className="text-3xl font-bold text-[#0B1120] mb-2">Join Immi Insightive in Australia</h1>
               <p className="text-lg text-[#0B1120]/70 mb-2">Create your account to begin your immigration journey</p>
     
             </div>
