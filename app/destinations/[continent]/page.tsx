@@ -186,7 +186,9 @@ const continentData: ContinentData = {
   },
 }
 
-export function generateStaticParams() {
+export const dynamicParams = false
+
+export async function generateStaticParams(): Promise<{ continent: ContinentId }[]> {
   const continents = Object.keys(continentData) as ContinentId[]
   return continents.map((continent) => ({ continent }))
 }
