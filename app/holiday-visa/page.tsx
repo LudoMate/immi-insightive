@@ -180,6 +180,10 @@ export default function HolidayVisaPage() {
                 </div>
               </div>
 
+              <Link href="/destinations" className="block">
+                <Button className="w-full bg-[#f4e04d] text-black hover:bg-[#f4e04d]/90">Search Continent</Button>
+              </Link>
+
               <Button className="w-full bg-[#f4e04d] text-black hover:bg-[#f4e04d]/90">Start Your Journey</Button>
             </div>
           </Card>
