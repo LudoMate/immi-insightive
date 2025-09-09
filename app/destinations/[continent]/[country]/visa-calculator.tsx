@@ -394,12 +394,14 @@ export default function VisaCalculator({ country, continent }: Props) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
               <Button className="bg-blue-600 hover:bg-blue-700 h-12">Get Travel Catalogue</Button>
-              <Button
-                variant="outline"
-                className="h-12 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 bg-transparent"
-              >
-                Start Visa Application
-              </Button>
+              <Link href="/applications/new">
+                <Button
+                  variant="outline"
+                  className="h-12 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 bg-transparent w-full"
+                >
+                  Start Visa Application
+                </Button>
+              </Link>
             </div>
           </div>
         )

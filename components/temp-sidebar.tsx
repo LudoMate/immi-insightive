@@ -1,11 +1,12 @@
 "use client"
 
+import type React from "react"
+
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
   FileText,
   Home,
-  Settings,
   MessageSquare,
   Briefcase,
   Globe,
@@ -52,7 +53,7 @@ export function DashboardSidebar({ className, ...props }: SidebarProps) {
           <div className="flex items-center gap-3 p-2.5 rounded-lg bg-white border border-[#E5E7EB]">
             <Avatar className="h-10 w-10 border-2 border-[#0066FF]/10">
               <AvatarImage src="/placeholder-user.jpg" alt="Francois Mercer" className="object-cover" />
-              <AvatarFallback className="bg-[#0066FF] text-white">FM</AvatarFallback>
+              <AvatarFallback className="bg-[#0066FF] text-white font-semibold">FM</AvatarFallback>
             </Avatar>
             <div className="flex-1 overflow-hidden">
               <p className="text-sm font-medium text-[#0B1120]">Francois Mercer</p>
@@ -77,11 +78,11 @@ export function DashboardSidebar({ className, ...props }: SidebarProps) {
           <div className="px-4">
             <div className="text-xs font-medium text-[#0B1120]/40 px-2 mb-2">Navigation</div>
             <div className="space-y-1">
-              <Link 
-                href="/dashboard" 
+              <Link
+                href="/dashboard"
                 className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
-                  isActive("/dashboard") 
-                    ? "bg-[#0066FF]/5 text-[#0066FF]" 
+                  isActive("/dashboard")
+                    ? "bg-[#0066FF]/5 text-[#0066FF]"
                     : "text-[#0B1120] hover:bg-[#0066FF]/5 hover:text-[#0066FF]"
                 }`}
               >
@@ -90,7 +91,7 @@ export function DashboardSidebar({ className, ...props }: SidebarProps) {
               </Link>
 
               <div className="mt-6">
-                <div 
+                <div
                   className="flex items-center justify-between px-3 py-2 text-sm text-[#0B1120] cursor-pointer hover:text-[#0066FF]"
                   onClick={() => toggleGroup("services")}
                 >
@@ -99,33 +100,33 @@ export function DashboardSidebar({ className, ...props }: SidebarProps) {
                 </div>
                 {openGroups.services && (
                   <div className="mt-1 ml-2 space-y-1">
-                    <Link 
+                    <Link
                       href="/services/holiday-visa"
                       className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
-                        isActive("/services/holiday-visa") 
-                          ? "bg-[#0066FF]/5 text-[#0066FF]" 
+                        isActive("/services/holiday-visa")
+                          ? "bg-[#0066FF]/5 text-[#0066FF]"
                           : "text-[#0B1120] hover:bg-[#0066FF]/5 hover:text-[#0066FF]"
                       }`}
                     >
                       <Globe className="h-4 w-4 text-[#0066FF]" />
                       <span className="text-sm">Holiday Visa</span>
                     </Link>
-                    <Link 
+                    <Link
                       href="/services/study-abroad"
                       className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
-                        isActive("/services/study-abroad") 
-                          ? "bg-[#0066FF]/5 text-[#0066FF]" 
+                        isActive("/services/study-abroad")
+                          ? "bg-[#0066FF]/5 text-[#0066FF]"
                           : "text-[#0B1120] hover:bg-[#0066FF]/5 hover:text-[#0066FF]"
                       }`}
                     >
                       <BookOpen className="h-4 w-4 text-[#0066FF]" />
                       <span className="text-sm">Study Abroad</span>
                     </Link>
-                    <Link 
+                    <Link
                       href="/services/work-settle"
                       className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
-                        isActive("/services/work-settle") 
-                          ? "bg-[#0066FF]/5 text-[#0066FF]" 
+                        isActive("/services/work-settle")
+                          ? "bg-[#0066FF]/5 text-[#0066FF]"
                           : "text-[#0B1120] hover:bg-[#0066FF]/5 hover:text-[#0066FF]"
                       }`}
                     >
@@ -137,42 +138,44 @@ export function DashboardSidebar({ className, ...props }: SidebarProps) {
               </div>
 
               <div className="mt-6">
-                <div 
+                <div
                   className="flex items-center justify-between px-3 py-2 text-sm text-[#0B1120] cursor-pointer hover:text-[#0066FF]"
                   onClick={() => toggleGroup("quickActions")}
                 >
                   <span className="font-medium">Quick Actions</span>
-                  <ChevronRight className={`h-4 w-4 transition-transform ${openGroups.quickActions ? "rotate-90" : ""}`} />
+                  <ChevronRight
+                    className={`h-4 w-4 transition-transform ${openGroups.quickActions ? "rotate-90" : ""}`}
+                  />
                 </div>
                 {openGroups.quickActions && (
                   <div className="mt-1 ml-2 space-y-1">
-                    <Link 
+                    <Link
                       href="/upload-documents"
                       className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
-                        isActive("/upload-documents") 
-                          ? "bg-[#0066FF]/5 text-[#0066FF]" 
+                        isActive("/upload-documents")
+                          ? "bg-[#0066FF]/5 text-[#0066FF]"
                           : "text-[#0B1120] hover:bg-[#0066FF]/5 hover:text-[#0066FF]"
                       }`}
                     >
                       <Upload className="h-4 w-4 text-[#0066FF]" />
                       <span className="text-sm">Upload Documents</span>
                     </Link>
-                    <Link 
+                    <Link
                       href="/consultation-booking"
                       className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
-                        isActive("/consultation-booking") 
-                          ? "bg-[#0066FF]/5 text-[#0066FF]" 
+                        isActive("/consultation-booking")
+                          ? "bg-[#0066FF]/5 text-[#0066FF]"
                           : "text-[#0B1120] hover:bg-[#0066FF]/5 hover:text-[#0066FF]"
                       }`}
                     >
                       <MessageSquare className="h-4 w-4 text-[#0066FF]" />
                       <span className="text-sm">Book Consultation</span>
                     </Link>
-                    <Link 
+                    <Link
                       href="/document-reminders"
                       className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
-                        isActive("/document-reminders") 
-                          ? "bg-[#0066FF]/5 text-[#0066FF]" 
+                        isActive("/document-reminders")
+                          ? "bg-[#0066FF]/5 text-[#0066FF]"
                           : "text-[#0B1120] hover:bg-[#0066FF]/5 hover:text-[#0066FF]"
                       }`}
                     >
@@ -188,8 +191,8 @@ export function DashboardSidebar({ className, ...props }: SidebarProps) {
         </nav>
 
         <div className="mt-auto p-4 border-t border-[#E5E7EB]">
-          <Link 
-            href="/help" 
+          <Link
+            href="/help"
             className="flex items-center gap-3 px-3 py-2 rounded-md text-[#0B1120] hover:bg-[#0066FF]/5 hover:text-[#0066FF] transition-colors"
           >
             <HelpCircle className="h-4 w-4 text-[#0066FF]" />
