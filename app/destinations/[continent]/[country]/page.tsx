@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation"
-import ContinentClient from "./continent-client"
-import type { ContinentData, ContinentId } from "../types"
+import VisaCalculator from "./visa-calculator"
+import type { ContinentData, ContinentId } from "../../types"
 
-// Sample data - In a real app, this would come from an API or database
+// Import the same continent data
 const continentData: ContinentData = {
   africa: {
     name: "Africa",
@@ -272,27 +272,82 @@ const continentData: ContinentData = {
       },
     ],
   },
+  "middle-east": {
+    name: "Middle East",
+    description: "Business opportunities and cultural heritage",
+    countries: [
+      {
+        name: "United Arab Emirates",
+        description: "Global business hub with luxury lifestyle",
+        processingTime: "5-10 days",
+        requirements: ["Valid passport", "Visa application", "Proof of funds"],
+        rating: 4.6,
+        popularFor: ["Work", "Business", "Tourism"],
+      },
+      {
+        name: "Qatar",
+        description: "Growing economy with opportunities",
+        processingTime: "7-14 days",
+        requirements: ["Valid passport", "Sponsor letter", "Health insurance"],
+        rating: 4.4,
+        popularFor: ["Work", "Business", "Sports Events"],
+      },
+      {
+        name: "Saudi Arabia",
+        description: "Emerging tourism and business destination",
+        processingTime: "10-15 days",
+        requirements: ["Valid passport", "E-visa", "Travel insurance"],
+        rating: 4.2,
+        popularFor: ["Business", "Tourism", "Religious Tourism"],
+      },
+      {
+        name: "Jordan",
+        description: "Rich history and cultural heritage",
+        processingTime: "5-10 days",
+        requirements: ["Valid passport", "Jordan Pass", "Hotel booking"],
+        rating: 4.3,
+        popularFor: ["Tourism", "Cultural Exchange", "Study"],
+      },
+    ],
+  },
 }
 
 export const dynamicParams = false
 
-export async function generateStaticParams(): Promise<{ continent: ContinentId }[]> {
-  const continents = Object.keys(continentData) as ContinentId[]
-  return continents.map((continent) => ({ continent }))
+export async function generateStaticParams(): Promise<{ continent: ContinentId; country: string }[]> {
+  const params: { continent: ContinentId; country: string }[] = []
+
+  Object.entries(continentData).forEach(([continentId, continentInfo]) => {
+    continentInfo.countries.forEach((country) => {
+      params.push({
+        continent: continentId as ContinentId,
+        country: country.name.toLowerCase().replace(/\s+/g, "-"),
+      })
+    })
+  })
+
+  return params
 }
 
 interface PageProps {
-  params: { continent: string }
+  params: { continent: string; country: string }
 }
 
-export default function ContinentPage({ params }: PageProps) {
+export default function CountryCalculatorPage({ params }: PageProps) {
   const continent = params.continent as ContinentId
+  const countrySlug = params.country
   const data = continentData[continent]
 
   if (!data) {
-    // Unknown continents shouldn't be generated; ensure 404 for safety
     notFound()
   }
 
-  return <ContinentClient data={data} />
+  // Find the country by converting name to slug format
+  const country = data.countries.find((c) => c.name.toLowerCase().replace(/\s+/g, "-") === countrySlug)
+
+  if (!country) {
+    notFound()
+  }
+
+  return <VisaCalculator country={country} continent={data.name} />
 }

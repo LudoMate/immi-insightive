@@ -1,11 +1,9 @@
 "use client"
 
 import type React from "react"
-import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
-  BarChart3,
   Users,
   FileText,
   Home,
@@ -38,8 +36,6 @@ import {
   SidebarSeparator,
 } from "@/components/ui/sidebar"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
 import { useState } from "react"
 
 export function DashboardSidebar({ className, ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -59,7 +55,7 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
   const isActive = (path: string) => pathname === path
 
   return (
-    <Sidebar variant="inset" {...props} className="[&_*]:!bg-white [&_*]:!text-gray-600 [&_svg]:!text-[#0066FF] [&_svg.lucide]:!text-[#0066FF] [&_svg.lucide]:!stroke-[#0066FF] [&_svg.lucide]:!fill-none">
+    <Sidebar variant="inset" {...props} className="bg-white border-gray-200">
       <SidebarHeader className="space-y-2">
         <div className="px-4 py-4">
           <div className="relative">
@@ -67,7 +63,7 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
             <SidebarInput
               type="search"
               placeholder="Quick search..."
-              className="pl-9 w-full !bg-gray-50/80 border-gray-200 !text-gray-900 placeholder:!text-gray-400 focus-visible:ring-[#0066FF] focus-visible:border-[#0066FF] text-sm rounded-lg"
+              className="pl-9 w-full bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 focus-visible:ring-[#0066FF] focus-visible:border-[#0066FF] text-sm rounded-lg"
             />
           </div>
         </div>
@@ -75,22 +71,30 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
 
       <SidebarContent className="px-2">
         <SidebarGroup>
-          <SidebarGroupLabel className="!text-gray-500 font-medium px-2 text-xs uppercase tracking-wider">Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-gray-500 font-medium px-2 text-xs uppercase tracking-wider">
+            Navigation
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={isActive("/dashboard")}>
-                  <Link href="/dashboard" className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5">
+                  <Link
+                    href="/dashboard"
+                    className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                  >
                     <div className="bg-[#0066FF]/10 p-2 rounded-lg">
                       <Home className="h-4 w-4 text-[#0066FF]" />
                     </div>
-                    <span className="!text-gray-900 font-medium">Dashboard</span>
+                    <span className="text-gray-900 font-medium group-hover:text-[#0066FF]">Dashboard</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={isActive("/applications/status")}>
-                  <Link href="/applications/status" className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5">
+                  <Link
+                    href="/applications/status"
+                    className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                  >
                     <div className="bg-[#0066FF]/10 p-2 rounded-lg">
                       <FileText className="h-4 w-4 text-[#0066FF]" />
                     </div>
@@ -100,7 +104,10 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={isActive("/profile")}>
-                  <Link href="/profile" className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5">
+                  <Link
+                    href="/profile"
+                    className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                  >
                     <div className="bg-[#0066FF]/10 p-2 rounded-lg">
                       <Users className="h-4 w-4 text-[#0066FF]" />
                     </div>
@@ -110,7 +117,10 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={isActive("/applications/new")}>
-                  <Link href="/applications/new" className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5">
+                  <Link
+                    href="/applications/new"
+                    className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                  >
                     <div className="bg-[#0066FF]/10 p-2 rounded-lg">
                       <FileText className="h-4 w-4 text-[#0066FF]" />
                     </div>
@@ -120,7 +130,10 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={isActive("/notifications")}>
-                  <Link href="/notifications" className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5">
+                  <Link
+                    href="/notifications"
+                    className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                  >
                     <div className="bg-[#0066FF]/10 p-2 rounded-lg">
                       <Bell className="h-4 w-4 text-[#0066FF]" />
                     </div>
@@ -131,7 +144,6 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -155,7 +167,10 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
                 <SidebarMenu>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive={isActive("/services/holiday-visa")}>
-                      <Link href="/services/holiday-visa" className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5">
+                      <Link
+                        href="/services/holiday-visa"
+                        className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                      >
                         <div className="bg-[#0066FF]/10 p-2 rounded-lg">
                           <Globe className="h-4 w-4 text-[#0066FF]" />
                         </div>
@@ -165,7 +180,10 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
                   </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive={isActive("/services/study-abroad")}>
-                      <Link href="/services/study-abroad" className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5">
+                      <Link
+                        href="/services/study-abroad"
+                        className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                      >
                         <div className="bg-[#0066FF]/10 p-2 rounded-lg">
                           <BookOpen className="h-4 w-4 text-[#0066FF]" />
                         </div>
@@ -175,7 +193,10 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
                   </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive={isActive("/services/work-settle")}>
-                      <Link href="/services/work-settle" className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5">
+                      <Link
+                        href="/services/work-settle"
+                        className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                      >
                         <div className="bg-[#0066FF]/10 p-2 rounded-lg">
                           <Briefcase className="h-4 w-4 text-[#0066FF]" />
                         </div>
@@ -227,7 +248,9 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
                       <Link href="/document-reminders" className="group">
                         <Clock className="mr-2 h-4 w-4 text-[#0066FF]" />
                         <span className="text-gray-900 group-hover:text-[#0066FF]">Document Reminders</span>
-                        <span className="ml-auto bg-[#0066FF] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                        <span className="ml-auto bg-[#0066FF] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                          2
+                        </span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -250,7 +273,10 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={isActive("/profile/settings")}>
-              <Link href="/profile/settings" className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5">
+              <Link
+                href="/profile/settings"
+                className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+              >
                 <div className="bg-[#0066FF]/10 p-2 rounded-lg">
                   <Settings className="h-4 w-4 text-[#0066FF]" />
                 </div>
