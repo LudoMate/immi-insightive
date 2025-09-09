@@ -1,26 +1,20 @@
 export interface Country {
-  name: string;
-  description: string;
-  processingTime: string;
-  requirements: string[];
-  rating: number;
-  popularFor: string[];
+  name: string
+  description: string
+  processingTime: string
+  requirements: string[]
+  rating: number
+  popularFor: string[]
 }
 
 export interface ContinentInfo {
-  name: string;
-  description: string;
-  countries: Country[];
+  name: string
+  description: string
+  countries: Country[]
 }
 
-export type ContinentId = 
-  | "africa" 
-  | "asia" 
-  | "europe" 
-  | "north-america" 
-  | "oceania" 
-  | "south-america";
+export type ContinentId = "africa" | "asia" | "europe" | "north-america" | "oceania" | "south-america" | "middle-east"
 
 export type ContinentData = {
-  [K in ContinentId]: ContinentInfo;
+  [K in ContinentId]: ContinentInfo
 }

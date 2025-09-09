@@ -37,6 +37,30 @@ const continents = [
     gradient: "from-orange-500 to-red-500",
     iconColor: "text-orange-500",
   },
+  {
+    id: "africa",
+    name: "Africa",
+    description: "Vibrant cultures, diverse landscapes, emerging markets",
+    count: "5 countries available",
+    gradient: "from-amber-500 to-orange-600",
+    iconColor: "text-amber-500",
+  },
+  {
+    id: "oceania",
+    name: "Oceania",
+    description: "Paradise destinations, working holiday opportunities",
+    count: "3 countries available",
+    gradient: "from-teal-500 to-cyan-600",
+    iconColor: "text-teal-500",
+  },
+  {
+    id: "south-america",
+    name: "South America",
+    description: "Rich cultures, natural wonders, growing opportunities",
+    count: "5 countries available",
+    gradient: "from-emerald-500 to-green-600",
+    iconColor: "text-emerald-500",
+  },
 ]
 
 export default function DestinationsPage() {
