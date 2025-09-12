@@ -25,48 +25,50 @@ const DashboardPage = () => {
   return (
     <DashboardLayout>
       <div className="min-h-screen bg-gray-50">
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
+        <div className="container max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 lg:py-8">
           {/* Welcome Section with Overview */}
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-4 mb-6 sm:mb-8">
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-3 sm:gap-4 mb-4 sm:mb-6 md:mb-8">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Welcome back, Francois!</h1>
-              <p className="text-sm sm:text-base text-gray-600">Here's an overview of your immigration journey</p>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-1 sm:mb-2">
+                Welcome back, Francois!
+              </h1>
+              <p className="text-sm md:text-base text-gray-600">Here's an overview of your immigration journey</p>
             </div>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 w-full sm:w-auto">
               <Link href="/document-reminders" className="w-full sm:w-auto">
-                <Button variant="outline" className="bg-white w-full sm:w-auto text-sm">
-                  <Bell className="h-4 w-4 mr-2" />
-                  <span className="hidden sm:inline">2 Document Reminders</span>
-                  <span className="sm:hidden">2 Reminders</span>
+                <Button variant="outline" className="bg-white w-full sm:w-auto text-xs sm:text-sm h-8 sm:h-9 md:h-10">
+                  <Bell className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                  <span className="hidden md:inline">2 Document Reminders</span>
+                  <span className="md:hidden">2 Reminders</span>
                 </Button>
               </Link>
               <Link href="/notifications" className="w-full sm:w-auto">
-                <Button className="bg-[#0066FF] hover:bg-[#0066FF]/90 w-full sm:w-auto text-sm">
-                  <Bell className="h-4 w-4 mr-2" />
-                  <span className="hidden sm:inline">3 New Updates</span>
-                  <span className="sm:hidden">3 Updates</span>
+                <Button className="bg-[#0066FF] hover:bg-[#0066FF]/90 w-full sm:w-auto text-xs sm:text-sm h-8 sm:h-9 md:h-10">
+                  <Bell className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                  <span className="hidden md:inline">3 New Updates</span>
+                  <span className="md:hidden">3 Updates</span>
                 </Button>
               </Link>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {/* Main Content - Left Column */}
-            <div className="xl:col-span-2 space-y-6">
+            <div className="xl:col-span-2 space-y-4 sm:space-y-6">
               {/* Stats Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 <Card className="bg-white">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-center gap-3 sm:gap-4">
-                      <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0066FF]/10 flex items-center justify-center">
-                        <FileText className="h-5 w-5 sm:h-6 sm:w-6 text-[#0066FF]" />
+                  <CardContent className="p-3 sm:p-4 md:p-6">
+                    <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                      <div className="shrink-0 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-[#0066FF]/10 flex items-center justify-center">
+                        <FileText className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-[#0066FF]" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-xs sm:text-sm font-medium text-gray-500">Active Applications</p>
-                        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">2</h3>
+                        <p className="text-xs md:text-sm font-medium text-gray-500">Active Applications</p>
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mt-0.5 sm:mt-1">2</h3>
                       </div>
                     </div>
-                    <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-100">
+                    <div className="mt-2 sm:mt-3 md:mt-4 pt-2 sm:pt-3 md:pt-4 border-t border-gray-100">
                       <Link
                         href="/applications/status"
                         className="text-xs sm:text-sm text-[#0066FF] hover:underline flex items-center"
@@ -100,17 +102,17 @@ const DashboardPage = () => {
                 </Card>
 
                 <Card className="bg-white sm:col-span-2 lg:col-span-1">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-center gap-3 sm:gap-4">
-                      <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0066FF]/10 flex items-center justify-center">
-                        <BarChart className="h-5 w-5 sm:h-6 sm:w-6 text-[#0066FF]" />
+                  <CardContent className="p-3 sm:p-4 md:p-6">
+                    <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                      <div className="shrink-0 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-[#0066FF]/10 flex items-center justify-center">
+                        <BarChart className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 text-[#0066FF]" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-xs sm:text-sm font-medium text-gray-500">Overall Progress</p>
-                        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mt-1">75%</h3>
+                        <p className="text-xs md:text-sm font-medium text-gray-500">Overall Progress</p>
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mt-0.5 sm:mt-1">75%</h3>
                       </div>
                     </div>
-                    <div className="mt-3 sm:mt-4">
+                    <div className="mt-2 sm:mt-3 md:mt-4">
                       <div className="h-2 bg-gray-100 rounded-full">
                         <div className="h-2 bg-[#0066FF] rounded-full" style={{ width: "75%" }} />
                       </div>
