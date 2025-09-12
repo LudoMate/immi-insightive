@@ -4,45 +4,45 @@
 
 :root {
   /* Text Colors */
-  --text-primary: #171717;    /* neutral-900 */
-  --text-secondary: #525252;  /* neutral-600 */
-  --text-disabled: #a3a3a3;   /* neutral-400 */
-  
+  --text-primary: #475569; /* dark gray for professional text */
+  --text-secondary: #64748b; /* medium gray for secondary text */
+  --text-disabled: #a3a3a3; /* neutral-400 */
+
   /* Button Colors */
-  --button-primary: #2563eb;  /* blue-600 */
-  --button-hover: #1d4ed8;    /* blue-700 */
+  --button-primary: #059669; /* emerald-600 for primary actions */
+  --button-hover: #047857; /* emerald-700 for hover states */
   --button-disabled: #d4d4d4; /* neutral-300 */
-  
+
   /* Background Colors */
-  --bg-main: #ffffff;         /* white */
-  --bg-secondary: #f9fafb;    /* gray-50 */
-  --bg-card: #ffffff;         /* white */
-  --bg-hover: #eff6ff;        /* blue-50 */
-  
+  --bg-main: #ffffff; /* white */
+  --bg-secondary: #f1f5f9; /* light gray for subtle backgrounds */
+  --bg-card: #ffffff; /* white for cards */
+  --bg-hover: #ecfdf5; /* emerald-50 for hover states */
+
   /* Border Colors */
-  --border-default: #e5e7eb;  /* gray-200 */
-  --border-focus: #93c5fd;    /* blue-300 */
-  --border-error: #ef4444;    /* red-500 */
-  
+  --border-default: #e5e7eb; /* gray-200 */
+  --border-focus: #10b981; /* emerald-500 for focus states */
+  --border-error: #ef4444; /* red-500 */
+
   /* Interactive Colors */
-  --link: #2563eb;           /* blue-600 */
-  --link-hover: #1d4ed8;     /* blue-700 */
-  --error: #dc2626;          /* red-600 */
-  
-  /* Accent Red Colors */
-  --destructive: #dc2626;  /* red-600 */
-  --destructive-hover: #b91c1c;  /* red-700 */
-  
-  /* System Colors */
+  --link: #059669; /* emerald-600 */
+  --link-hover: #047857; /* emerald-700 */
+  --error: #dc2626; /* red-600 */
+
+  /* Study Abroad Specific Colors */
+  --primary: #059669; /* emerald-600 */
   --primary-foreground: #ffffff;
-  --secondary-foreground: var(--text-dark);
-  --accent-foreground: var(--text);
-  --foreground: var(--text);
-  --card: var(--background);
-  --card-foreground: var(--text);
-  --input: var(--border);
-  --ring: var(--primary);
-  --radius: 0.5rem;
+  --secondary: #10b981; /* emerald-500 */
+  --secondary-foreground: #ffffff;
+  --accent: #10b981; /* emerald-500 */
+  --accent-foreground: #ffffff;
+
+  /* Chart colors for data visualization */
+  --chart-1: #059669;
+  --chart-2: #10b981;
+  --chart-3: #6b7280;
+  --chart-4: #475569;
+  --chart-5: #ecfeff;
 
   /* Sidebar variables */
   --sidebar-background: var(--primary);
@@ -57,21 +57,21 @@
 
 .dark {
   /* Dark theme adjustments */
-  --background: #111827;  /* gray-900 */
-  --background-subtle: #1f2937;  /* gray-800 */
-  --border: #374151;  /* gray-700 */
-  --disabled: #4b5563;  /* gray-600 */
-  --text: #e5e7eb;  /* gray-200 */
-  --text-hover: #f3f4f6;  /* gray-100 */
-  --text-dark: #f9fafb;  /* gray-50 */
-  
+  --background: #111827; /* gray-900 */
+  --background-subtle: #1f2937; /* gray-800 */
+  --border: #374151; /* gray-700 */
+  --disabled: #4b5563; /* gray-600 */
+  --text: #e5e7eb; /* gray-200 */
+  --text-hover: #f3f4f6; /* gray-100 */
+  --text-dark: #f9fafb; /* gray-50 */
+
   /* Primary colors in dark mode */
-  --primary: #3b82f6;  /* blue-500 - brighter for dark mode */
-  --primary-hover: #2563eb;  /* blue-600 */
-  --primary-bg: #1e3a8a;  /* blue-900 */
-  --primary-dark: #93c5fd;  /* blue-300 */
-  --primary-light: #60a5fa;  /* blue-400 */
-  
+  --primary: #3b82f6; /* blue-500 - brighter for dark mode */
+  --primary-hover: #2563eb; /* blue-600 */
+  --primary-bg: #1e3a8a; /* blue-900 */
+  --primary-dark: #93c5fd; /* blue-300 */
+  --primary-light: #60a5fa; /* blue-400 */
+
   /* System colors in dark mode */
   --primary-foreground: var(--text-dark);
   --card: var(--background-subtle);
@@ -94,19 +94,19 @@ body {
 
 @layer components {
   .immi-bg-primary {
-    background-color: var(--blue-600);
+    background-color: #059669;
   }
 
   .immi-bg-secondary {
-    background-color: var(--gray-50);
+    background-color: #f1f5f9;
   }
 
   .immi-text-primary {
-    color: var(--blue-600);
+    color: #059669;
   }
 
   .immi-text-secondary {
-    color: var(--gray-600);
+    color: #64748b;
   }
 
   .immi-card {
@@ -114,11 +114,11 @@ body {
     padding: 1.5rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     background-color: white;
-    border: 1px solid var(--gray-200);
+    border: 1px solid #e5e7eb;
   }
 
   .immi-button-primary {
-    background-color: var(--blue-600);
+    background-color: #059669;
     color: white;
     font-weight: 600;
     padding: 0.75rem 1.5rem;
@@ -126,35 +126,57 @@ body {
     transition: background-color 0.2s;
   }
   .immi-button-primary:hover {
-    background-color: var(--blue-700);
+    background-color: #047857;
   }
 
   .immi-button-secondary {
     background-color: white;
-    color: var(--gray-600);
+    color: #64748b;
     font-weight: 600;
     padding: 0.75rem 1.5rem;
     border-radius: 9999px;
-    border: 1px solid var(--gray-200);
+    border: 1px solid #e5e7eb;
     transition: all 0.2s;
   }
   .immi-button-secondary:hover {
-    background-color: var(--gray-50);
-    color: var(--gray-800);
+    background-color: #f1f5f9;
+    color: #475569;
   }
 
   .immi-input {
     border-radius: 9999px;
     padding: 0.75rem 1rem;
-    border: 1px solid var(--gray-200);
+    border: 1px solid #e5e7eb;
     width: 100%;
-    background-color: white;
-    color: var(--gray-900);
+    background-color: #f1f5f9;
+    color: #475569;
     transition: all 0.2s;
   }
   .immi-input:focus {
     outline: none;
-    border-color: var(--blue-600);
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.2);
+  }
+
+  /* Study Abroad specific component styles */
+  .study-progress-bar {
+    background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+    height: 4px;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .study-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+  }
+
+  .study-card:hover {
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.15);
+    border-color: #10b981;
   }
 }
