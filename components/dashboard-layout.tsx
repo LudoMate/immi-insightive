@@ -3,9 +3,9 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { Bell, Menu } from "lucide-react"
+import { Bell, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { DashboardSidebar } from "@/components/dashboard-sidebar"
 import {
   DropdownMenu,
@@ -22,13 +22,13 @@ interface DashboardLayoutProps {
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   const router = useRouter()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false)
 
+  // Add global styles to prevent horizontal scrolling
   useEffect(() => {
     document.body.style.overflowX = "hidden"
-    document.documentElement.style.overflowX = "hidden"
     return () => {
       document.body.style.overflowX = ""
-      document.documentElement.style.overflowX = ""
     }
   }, [])
 
@@ -66,39 +66,55 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   if (!isAuthenticated) return null
 
   return (
-    <SidebarProvider defaultOpen={true}>
-      <div className="flex min-h-screen w-full bg-gray-50">
-        {/* Fixed Sidebar for Desktop */}
-        <div className="hidden md:block fixed top-0 left-0 h-full w-[240px] lg:w-[260px] xl:w-[280px] z-50">
-          <DashboardSidebar className="h-full w-full border-r border-gray-200 bg-white overflow-y-auto shadow-sm" />
+    <SidebarProvider>
+      <div className="flex h-screen w-full overflow-hidden bg-gray-50">
+        {isMobileSidebarOpen && (
+          <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={() => setIsMobileSidebarOpen(false)} />
+        )}
+
+        <div
+          className={`
+          fixed top-0 bottom-0 left-0 z-50 w-[280px] transform transition-transform duration-300 ease-in-out
+          lg:translate-x-0 lg:static lg:z-auto
+          ${isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+        `}
+        >
+          <DashboardSidebar className="h-full w-full border-r border-gray-200 bg-white overflow-y-auto" />
         </div>
 
-        {/* Main Content Area */}
-        <div className="flex-1 flex flex-col md:ml-[240px] lg:ml-[260px] xl:ml-[280px] min-h-screen">
-          <SidebarInset className="flex flex-col flex-1">
-            {/* Header */}
-            <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
-              <div className="flex h-14 md:h-16 items-center justify-between gap-4 px-4 md:px-6">
-                {/* Mobile Menu Trigger */}
-                <div className="flex items-center gap-3 md:hidden">
-                  <SidebarTrigger>
-                    <Button variant="ghost" size="icon" className="h-9 w-9 hover:bg-gray-100">
+        <div className="flex-1 flex flex-col w-full lg:ml-0">
+          <SidebarInset className="flex flex-col w-full flex-1">
+            <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+              <div className="flex h-14 lg:h-16 items-center justify-between gap-4 px-4 lg:px-6">
+                <div className="flex items-center gap-3">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="lg:hidden h-9 w-9"
+                    onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
+                  >
+                    {isMobileSidebarOpen ? (
+                      <X className="h-5 w-5 text-gray-700" />
+                    ) : (
                       <Menu className="h-5 w-5 text-gray-700" />
-                    </Button>
-                  </SidebarTrigger>
+                    )}
+                  </Button>
+                  <div
+                    className={`font-semibold text-gray-900 text-lg lg:block ${isMobileSidebarOpen ? "hidden" : "block"}`}
+                  >
+                    Insightive
+                  </div>
                 </div>
 
-                {/* Right Section */}
-                <div className="flex items-center gap-3 ml-auto">
-                  {/* Notifications */}
+                <div className="flex items-center gap-2 lg:gap-4">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="relative hover:bg-gray-100/80 h-10 w-10 rounded-full"
+                        className="relative hover:bg-gray-100/80 h-9 w-9 lg:h-10 lg:w-10"
                       >
-                        <Bell className="h-5 w-5 text-gray-600" />
+                        <Bell className="h-4 w-4 lg:h-5 lg:w-5 text-gray-600" />
                         {notifications.some((n) => !n.read) && (
                           <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#0066FF] text-[10px] font-medium text-white">
                             {notifications.filter((n) => !n.read).length}
@@ -110,19 +126,19 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                       align="end"
                       side="bottom"
                       sideOffset={5}
-                      className="w-[320px] md:w-[380px] p-2 bg-white rounded-lg shadow-lg border border-gray-200 z-[60]"
+                      className="w-[320px] lg:w-[380px] p-2 bg-white rounded-lg shadow-lg border border-gray-200 z-[60]"
                     >
                       <DropdownMenuLabel className="flex items-center justify-between px-3 py-2 mb-1 border-b border-gray-100">
-                        <span className="text-base font-semibold text-gray-900">Notifications</span>
+                        <span className="text-sm lg:text-base font-semibold text-gray-900">Notifications</span>
                         <Button
                           variant="ghost"
-                          className="h-8 px-3 text-sm font-medium text-[#0066FF] hover:text-white hover:bg-[#0066FF] transition-colors rounded-full"
+                          className="h-7 lg:h-8 px-2 lg:px-3 text-xs lg:text-sm font-medium text-[#0066FF] hover:text-white hover:bg-[#0066FF] transition-colors rounded-full"
                           onClick={() => router.push("/notifications")}
                         >
                           View all
                         </Button>
                       </DropdownMenuLabel>
-                      <div className="overflow-y-auto max-h-[400px]">
+                      <div className="overflow-y-auto max-h-[300px] lg:max-h-[400px]">
                         {notifications.map((notification) => (
                           <DropdownMenuItem
                             key={notification.id}
@@ -135,7 +151,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                               </span>
                               <span className="text-xs text-gray-500 whitespace-nowrap">{notification.time}</span>
                             </div>
-                            <p className="mt-1 text-sm text-gray-600 line-clamp-2 w-full group-hover:text-gray-700">
+                            <p className="mt-1 text-xs lg:text-sm text-gray-600 line-clamp-2 w-full group-hover:text-gray-700">
                               {notification.message}
                             </p>
                           </DropdownMenuItem>
@@ -146,31 +162,17 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
                   <Button
                     onClick={() => router.push("/applications/new")}
-                    className="bg-[#0066FF] text-white hover:bg-[#0066FF]/90 shadow-sm text-sm h-10 px-4 rounded-lg font-medium transition-all duration-200"
+                    className="bg-[#0066FF] text-white hover:bg-[#0066FF]/90 shadow-sm text-xs lg:text-sm px-3 lg:px-4 h-9 lg:h-10"
                   >
-                    <span className="hidden lg:inline">Start New Application</span>
-                    <span className="hidden md:inline lg:hidden">New Application</span>
-                    <span className="md:hidden">Apply</span>
+                    <span className="hidden sm:inline">Start New Application</span>
+                    <span className="sm:hidden">New App</span>
                   </Button>
                 </div>
               </div>
             </header>
 
-            <main className="flex-1 flex flex-col bg-gray-50 overflow-hidden">
-              <div className="flex-1 overflow-y-auto">{children}</div>
-
-              <footer className="bg-white border-t border-gray-200 px-4 md:px-6 py-4">
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-600">
-                  <div className="flex items-center gap-4">
-                    <span>© 2024 Immi Insightive. All rights reserved.</span>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <button className="hover:text-[#0066FF] transition-colors">Privacy Policy</button>
-                    <button className="hover:text-[#0066FF] transition-colors">Terms of Service</button>
-                    <button className="hover:text-[#0066FF] transition-colors">Support</button>
-                  </div>
-                </div>
-              </footer>
+            <main className="flex-1 w-full bg-gray-50 overflow-y-auto overflow-x-hidden">
+              <div className="p-4 lg:p-6 max-w-full">{children}</div>
             </main>
           </SidebarInset>
         </div>
