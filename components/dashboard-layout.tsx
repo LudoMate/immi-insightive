@@ -67,36 +67,40 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="flex h-screen w-full overflow-hidden bg-gray-50">
-        <div className="hidden md:block">
-          <DashboardSidebar className="fixed top-0 bottom-0 left-0 w-[200px] md:w-[220px] lg:w-[240px] xl:w-[260px] border-r border-gray-200 bg-white overflow-y-auto z-50 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-200 shadow-sm" />
+      <div className="flex min-h-screen w-full bg-gray-50">
+        {/* Fixed Sidebar for Desktop */}
+        <div className="hidden md:block fixed top-0 left-0 h-full w-[240px] lg:w-[260px] xl:w-[280px] z-50">
+          <DashboardSidebar className="h-full w-full border-r border-gray-200 bg-white overflow-y-auto shadow-sm" />
         </div>
 
-        <div className="flex-1 flex flex-col w-full md:ml-[200px] md:ml-[220px] lg:ml-[240px] xl:ml-[260px] min-h-screen">
-          <SidebarInset className="flex flex-col w-full flex-1 min-h-0">
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col md:ml-[240px] lg:ml-[260px] xl:ml-[280px] min-h-screen">
+          <SidebarInset className="flex flex-col flex-1">
+            {/* Header */}
             <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
-              <div className="flex h-12 sm:h-14 md:h-16 items-center justify-between gap-2 sm:gap-4 px-3 sm:px-4 md:px-6 max-w-full">
-                {/* Left section with menu trigger */}
-                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+              <div className="flex h-14 md:h-16 items-center justify-between gap-4 px-4 md:px-6">
+                {/* Mobile Menu Trigger */}
+                <div className="flex items-center gap-3 md:hidden">
                   <SidebarTrigger>
-                    <Button variant="ghost" size="icon" className="md:hidden h-8 w-8 sm:h-9 sm:w-9 hover:bg-gray-100">
-                      <Menu className="h-4 w-4 sm:h-5 sm:w-5 text-gray-700" />
+                    <Button variant="ghost" size="icon" className="h-9 w-9 hover:bg-gray-100">
+                      <Menu className="h-5 w-5 text-gray-700" />
                     </Button>
                   </SidebarTrigger>
                 </div>
 
-                <div className="flex items-center gap-1 sm:gap-2 md:gap-3 shrink-0">
+                {/* Right Section */}
+                <div className="flex items-center gap-3 ml-auto">
                   {/* Notifications */}
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="relative hover:bg-gray-100/80 h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 rounded-full"
+                        className="relative hover:bg-gray-100/80 h-10 w-10 rounded-full"
                       >
-                        <Bell className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 text-gray-600" />
+                        <Bell className="h-5 w-5 text-gray-600" />
                         {notifications.some((n) => !n.read) && (
-                          <span className="absolute -right-0.5 -top-0.5 sm:-right-1 sm:-top-1 flex h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-4 md:w-4 items-center justify-center rounded-full bg-[#0066FF] text-[8px] sm:text-[9px] md:text-[10px] font-medium text-white">
+                          <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#0066FF] text-[10px] font-medium text-white">
                             {notifications.filter((n) => !n.read).length}
                           </span>
                         )}
@@ -106,19 +110,19 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                       align="end"
                       side="bottom"
                       sideOffset={5}
-                      className="w-[280px] sm:w-[320px] md:w-[380px] p-2 bg-white rounded-lg shadow-lg border border-gray-200 z-[60]"
+                      className="w-[320px] md:w-[380px] p-2 bg-white rounded-lg shadow-lg border border-gray-200 z-[60]"
                     >
                       <DropdownMenuLabel className="flex items-center justify-between px-3 py-2 mb-1 border-b border-gray-100">
-                        <span className="text-sm md:text-base font-semibold text-gray-900">Notifications</span>
+                        <span className="text-base font-semibold text-gray-900">Notifications</span>
                         <Button
                           variant="ghost"
-                          className="h-6 sm:h-7 md:h-8 px-2 sm:px-3 text-xs md:text-sm font-medium text-[#0066FF] hover:text-white hover:bg-[#0066FF] transition-colors rounded-full"
+                          className="h-8 px-3 text-sm font-medium text-[#0066FF] hover:text-white hover:bg-[#0066FF] transition-colors rounded-full"
                           onClick={() => router.push("/notifications")}
                         >
                           View all
                         </Button>
                       </DropdownMenuLabel>
-                      <div className="overflow-y-auto max-h-[300px] sm:max-h-[400px]">
+                      <div className="overflow-y-auto max-h-[400px]">
                         {notifications.map((notification) => (
                           <DropdownMenuItem
                             key={notification.id}
@@ -126,12 +130,12 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
                             onClick={() => router.push("/notifications")}
                           >
                             <div className="flex w-full justify-between gap-2">
-                              <span className="font-medium text-gray-900 group-hover:text-[#0066FF] text-xs sm:text-sm">
+                              <span className="font-medium text-gray-900 group-hover:text-[#0066FF] text-sm">
                                 {notification.title}
                               </span>
                               <span className="text-xs text-gray-500 whitespace-nowrap">{notification.time}</span>
                             </div>
-                            <p className="mt-1 text-xs sm:text-sm text-gray-600 line-clamp-2 w-full group-hover:text-gray-700">
+                            <p className="mt-1 text-sm text-gray-600 line-clamp-2 w-full group-hover:text-gray-700">
                               {notification.message}
                             </p>
                           </DropdownMenuItem>
@@ -142,19 +146,31 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
 
                   <Button
                     onClick={() => router.push("/applications/new")}
-                    className="bg-[#0066FF] text-white hover:bg-[#0066FF]/90 shadow-sm text-xs sm:text-sm h-8 sm:h-9 md:h-10 px-2 sm:px-3 md:px-4 rounded-lg font-medium transition-all duration-200"
+                    className="bg-[#0066FF] text-white hover:bg-[#0066FF]/90 shadow-sm text-sm h-10 px-4 rounded-lg font-medium transition-all duration-200"
                   >
-                    <span className="hidden xl:inline">Start New Application</span>
-                    <span className="hidden md:inline xl:hidden">New Application</span>
-                    <span className="hidden sm:inline md:hidden">Apply</span>
-                    <span className="sm:hidden">+</span>
+                    <span className="hidden lg:inline">Start New Application</span>
+                    <span className="hidden md:inline lg:hidden">New Application</span>
+                    <span className="md:hidden">Apply</span>
                   </Button>
                 </div>
               </div>
             </header>
 
-            <main className="flex-1 w-full bg-gray-50 overflow-y-auto overflow-x-hidden">
-              <div className="w-full min-h-full">{children}</div>
+            <main className="flex-1 flex flex-col bg-gray-50 overflow-hidden">
+              <div className="flex-1 overflow-y-auto">{children}</div>
+
+              <footer className="bg-white border-t border-gray-200 px-4 md:px-6 py-4">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-600">
+                  <div className="flex items-center gap-4">
+                    <span>© 2024 Immi Insightive. All rights reserved.</span>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <button className="hover:text-[#0066FF] transition-colors">Privacy Policy</button>
+                    <button className="hover:text-[#0066FF] transition-colors">Terms of Service</button>
+                    <button className="hover:text-[#0066FF] transition-colors">Support</button>
+                  </div>
+                </div>
+              </footer>
             </main>
           </SidebarInset>
         </div>

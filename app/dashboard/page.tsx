@@ -24,31 +24,29 @@ import {
 const DashboardPage = () => {
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-gray-50">
-        <div className="container max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8">
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-4 sm:gap-6 mb-6 sm:mb-8">
+      <div className="w-full">
+        <div className="container max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8">
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-6 mb-8">
             <div className="min-w-0 flex-1">
-              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 leading-tight">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 leading-tight">
                 Welcome back, Francois!
               </h1>
-              <p className="text-sm sm:text-base md:text-lg text-gray-600">
-                Here's an overview of your immigration journey
-              </p>
+              <p className="text-base md:text-lg text-gray-600">Here's an overview of your immigration journey</p>
             </div>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 w-full sm:w-auto lg:shrink-0">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto lg:shrink-0">
               <Link href="/document-reminders" className="w-full sm:w-auto">
                 <Button
                   variant="outline"
-                  className="bg-white w-full sm:w-auto text-xs sm:text-sm h-9 sm:h-10 border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-colors"
+                  className="bg-white w-full sm:w-auto text-sm h-10 border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-colors"
                 >
-                  <Bell className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2" />
+                  <Bell className="h-4 w-4 mr-2" />
                   <span className="hidden lg:inline">2 Document Reminders</span>
                   <span className="lg:hidden">2 Reminders</span>
                 </Button>
               </Link>
               <Link href="/notifications" className="w-full sm:w-auto">
-                <Button className="bg-[#0066FF] hover:bg-[#0066FF]/90 w-full sm:w-auto text-xs sm:text-sm h-9 sm:h-10 shadow-sm transition-colors">
-                  <Bell className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2" />
+                <Button className="bg-[#0066FF] hover:bg-[#0066FF]/90 w-full sm:w-auto text-sm h-10 shadow-sm transition-colors">
+                  <Bell className="h-4 w-4 mr-2" />
                   <span className="hidden lg:inline">3 New Updates</span>
                   <span className="lg:hidden">3 Updates</span>
                 </Button>
@@ -56,19 +54,19 @@ const DashboardPage = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
             {/* Main Content - Left Column */}
-            <div className="xl:col-span-2 space-y-6 sm:space-y-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <div className="xl:col-span-2 space-y-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <Card className="bg-white shadow-sm border-gray-200 hover:shadow-md transition-shadow">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-center gap-3 sm:gap-4">
-                      <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl bg-[#0066FF]/10 flex items-center justify-center">
-                        <FileText className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-[#0066FF]" />
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl bg-[#0066FF]/10 flex items-center justify-center">
+                        <FileText className="h-6 w-6 md:h-7 md:w-7 text-[#0066FF]" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs sm:text-sm font-medium text-gray-500 mb-1">Active Applications</p>
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">2</h3>
+                        <p className="text-sm font-medium text-gray-500 mb-1">Active Applications</p>
+                        <h3 className="text-3xl md:text-4xl font-bold text-gray-900">2</h3>
                       </div>
                     </div>
                     <div className="mt-4 pt-4 border-t border-gray-100">
@@ -83,14 +81,14 @@ const DashboardPage = () => {
                 </Card>
 
                 <Card className="bg-white shadow-sm border-gray-200 hover:shadow-md transition-shadow">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-center gap-3 sm:gap-4">
-                      <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl bg-[#0066FF]/10 flex items-center justify-center">
-                        <Calendar className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-[#0066FF]" />
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl bg-[#0066FF]/10 flex items-center justify-center">
+                        <Calendar className="h-6 w-6 md:h-7 md:w-7 text-[#0066FF]" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs sm:text-sm font-medium text-gray-500 mb-1">Upcoming Sessions</p>
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">1</h3>
+                        <p className="text-sm font-medium text-gray-500 mb-1">Upcoming Sessions</p>
+                        <h3 className="text-3xl md:text-4xl font-bold text-gray-900">1</h3>
                       </div>
                     </div>
                     <div className="mt-4 pt-4 border-t border-gray-100">
@@ -105,14 +103,14 @@ const DashboardPage = () => {
                 </Card>
 
                 <Card className="bg-white shadow-sm border-gray-200 hover:shadow-md transition-shadow sm:col-span-2 lg:col-span-1">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-center gap-3 sm:gap-4">
-                      <div className="shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl bg-[#0066FF]/10 flex items-center justify-center">
-                        <BarChart className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-[#0066FF]" />
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-4">
+                      <div className="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl bg-[#0066FF]/10 flex items-center justify-center">
+                        <BarChart className="h-6 w-6 md:h-7 md:w-7 text-[#0066FF]" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs sm:text-sm font-medium text-gray-500 mb-1">Overall Progress</p>
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">75%</h3>
+                        <p className="text-sm font-medium text-gray-500 mb-1">Overall Progress</p>
+                        <h3 className="text-3xl md:text-4xl font-bold text-gray-900">75%</h3>
                       </div>
                     </div>
                     <div className="mt-4">
@@ -131,7 +129,7 @@ const DashboardPage = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Application Timeline */}
                 <Card className="bg-white shadow-sm border-gray-200 hover:shadow-md transition-shadow">
-                  <CardHeader className="border-b p-4 sm:p-6">
+                  <CardHeader className="border-b p-6">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#0066FF]/10 flex items-center justify-center">
@@ -146,7 +144,7 @@ const DashboardPage = () => {
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="text-[#0066FF] hover:bg-[#0066FF]/10 text-xs sm:text-sm"
+                          className="text-[#0066FF] hover:bg-[#0066FF]/10 text-sm sm:text-sm"
                         >
                           <span className="hidden sm:inline">View All</span>
                           <span className="sm:hidden">All</span>
@@ -155,8 +153,8 @@ const DashboardPage = () => {
                       </Link>
                     </div>
                   </CardHeader>
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="relative pl-6 sm:pl-8 space-y-4 sm:space-y-6">
+                  <CardContent className="p-6">
+                    <div className="relative pl-8 sm:pl-10 space-y-4 sm:space-y-6">
                       <div className="absolute left-0 top-2 bottom-0 w-px bg-[#0066FF]/10" />
                       {[
                         {
@@ -186,7 +184,7 @@ const DashboardPage = () => {
                       ].map((step, i) => (
                         <div key={i} className="relative group">
                           <div
-                            className={`absolute -left-6 sm:-left-8 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-white border-2 ${
+                            className={`absolute -left-8 sm:-left-10 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-white border-2 ${
                               step.status === "completed"
                                 ? "border-green-500"
                                 : step.status === "inProgress"
@@ -211,7 +209,7 @@ const DashboardPage = () => {
 
                 {/* Active Applications Panel */}
                 <Card className="bg-white shadow-sm border-gray-200 hover:shadow-md transition-shadow">
-                  <CardHeader className="border-b p-4 sm:p-6">
+                  <CardHeader className="border-b p-6">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#0066FF]/10 flex items-center justify-center">
@@ -226,7 +224,7 @@ const DashboardPage = () => {
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="text-[#0066FF] hover:bg-[#0066FF]/10 text-xs sm:text-sm"
+                          className="text-[#0066FF] hover:bg-[#0066FF]/10 text-sm sm:text-sm"
                         >
                           <span className="hidden sm:inline">View All</span>
                           <span className="sm:hidden">All</span>
@@ -235,7 +233,7 @@ const DashboardPage = () => {
                       </Link>
                     </div>
                   </CardHeader>
-                  <CardContent className="p-4 sm:p-6">
+                  <CardContent className="p-6">
                     <div className="space-y-4">
                       {[
                         { country: "Australia", type: "Holiday Visa", status: "In Progress", progress: 75 },
@@ -243,11 +241,11 @@ const DashboardPage = () => {
                       ].map((app, i) => (
                         <div
                           key={i}
-                          className="group p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#0066FF]/30 hover:bg-[#0066FF]/5 transition-all"
+                          className="group p-4 sm:p-5 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#0066FF]/30 hover:bg-[#0066FF]/5 transition-all"
                         >
                           <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center gap-3">
-                              <div className="p-1.5 sm:p-2 bg-white rounded-lg">
+                              <div className="p-2 sm:p-3 bg-white rounded-lg">
                                 <Plane className="h-4 w-4 sm:h-5 sm:w-5 text-[#0066FF]" />
                               </div>
                               <div>
@@ -258,7 +256,7 @@ const DashboardPage = () => {
                             <Button
                               variant="ghost"
                               size="sm"
-                              className="opacity-0 group-hover:opacity-100 transition-opacity text-xs sm:text-sm"
+                              className="opacity-0 group-hover:opacity-100 transition-opacity text-xs sm:text-sm shrink-0"
                             >
                               <span className="hidden sm:inline">View Details</span>
                               <span className="sm:hidden">View</span>
@@ -288,7 +286,7 @@ const DashboardPage = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Service Recommendations */}
                 <Card className="bg-white shadow-sm border-gray-200 hover:shadow-md transition-shadow">
-                  <CardHeader className="border-b p-4 sm:p-6">
+                  <CardHeader className="border-b p-6">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#0066FF]/10 flex items-center justify-center">
@@ -312,7 +310,7 @@ const DashboardPage = () => {
                       </Link>
                     </div>
                   </CardHeader>
-                  <CardContent className="p-4 sm:p-6">
+                  <CardContent className="p-6">
                     <div className="space-y-4">
                       {[
                         {
@@ -338,9 +336,9 @@ const DashboardPage = () => {
                         },
                       ].map((service, i) => (
                         <Link href={service.href} key={i} className="block">
-                          <div className="group p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#0066FF]/30 hover:bg-[#0066FF]/5 transition-all">
-                            <div className="flex items-start gap-3 sm:gap-4">
-                              <div className="p-1.5 sm:p-2 bg-white rounded-lg border border-gray-200">
+                          <div className="group p-4 sm:p-5 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#0066FF]/30 hover:bg-[#0066FF]/5 transition-all">
+                            <div className="flex items-start gap-4 sm:gap-5">
+                              <div className="p-2 sm:p-3 bg-white rounded-lg border border-gray-200">
                                 <service.icon className="h-4 w-4 sm:h-5 sm:w-5 text-[#0066FF]" />
                               </div>
                               <div className="flex-1 min-w-0">
@@ -363,10 +361,10 @@ const DashboardPage = () => {
                 </Card>
 
                 {/* Quick Actions & Updates */}
-                <div className="space-y-6">
+                <div className="space-y-8">
                   {/* Quick Actions */}
                   <Card className="bg-[#0066FF]">
-                    <CardContent className="p-4 sm:p-6">
+                    <CardContent className="p-6">
                       <h3 className="text-base sm:text-lg font-semibold text-white mb-4">Quick Actions</h3>
                       <div className="space-y-3">
                         <Link href="/applications/new" className="block">
@@ -405,7 +403,7 @@ const DashboardPage = () => {
 
                   {/* Important Updates */}
                   <Card className="bg-white shadow-sm border-gray-200 hover:shadow-md transition-shadow">
-                    <CardHeader className="border-b p-4 sm:p-6">
+                    <CardHeader className="border-b p-6">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#0066FF]/10 flex items-center justify-center">
@@ -420,8 +418,8 @@ const DashboardPage = () => {
                     </CardHeader>
                     <CardContent className="p-4">
                       <div className="space-y-4">
-                        <div className="p-3 sm:p-4 bg-green-50 rounded-lg border border-green-100">
-                          <div className="flex items-start gap-3">
+                        <div className="p-4 sm:p-5 bg-green-50 rounded-lg border border-green-100">
+                          <div className="flex items-start gap-4">
                             <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5 text-green-500 mt-0.5 shrink-0" />
                             <div className="min-w-0">
                               <p className="text-xs sm:text-sm font-medium text-green-800">Document Review Complete</p>
@@ -432,8 +430,8 @@ const DashboardPage = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="p-3 sm:p-4 bg-orange-50 rounded-lg border border-orange-100">
-                          <div className="flex items-start gap-3">
+                        <div className="p-4 sm:p-5 bg-orange-50 rounded-lg border border-orange-100">
+                          <div className="flex items-start gap-4">
                             <AlertCircle className="h-4 w-4 sm:h-5 sm:w-5 text-orange-500 mt-0.5 shrink-0" />
                             <div className="min-w-0">
                               <p className="text-xs sm:text-sm font-medium text-orange-800">Action Required</p>
@@ -451,10 +449,10 @@ const DashboardPage = () => {
               </div>
             </div>
 
-            <div className="space-y-6 sm:space-y-8">
+            <div className="space-y-8">
               {/* Service Timeline */}
               <Card className="bg-white shadow-sm border-gray-200 hover:shadow-md transition-shadow">
-                <CardHeader className="border-b p-4 sm:p-6">
+                <CardHeader className="border-b p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-[#0066FF]/10 flex items-center justify-center">
@@ -467,7 +465,7 @@ const DashboardPage = () => {
                     </div>
                   </div>
                 </CardHeader>
-                <CardContent className="p-4 sm:p-6">
+                <CardContent className="p-6">
                   <div className="space-y-4">
                     {[
                       {
@@ -485,10 +483,10 @@ const DashboardPage = () => {
                     ].map((session, i) => (
                       <div
                         key={i}
-                        className="group p-3 sm:p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#0066FF]/30 hover:bg-[#0066FF]/5 transition-all"
+                        className="group p-4 sm:p-5 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#0066FF]/30 hover:bg-[#0066FF]/5 transition-all"
                       >
-                        <div className="flex items-start gap-3 sm:gap-4">
-                          <div className="p-1.5 sm:p-2 bg-white rounded-lg border border-gray-200">
+                        <div className="flex items-start gap-4 sm:gap-5">
+                          <div className="p-2 sm:p-3 bg-white rounded-lg border border-gray-200">
                             <session.icon className="h-4 w-4 sm:h-5 sm:w-5 text-[#0066FF]" />
                           </div>
                           <div className="flex-1 min-w-0">
