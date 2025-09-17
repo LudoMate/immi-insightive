@@ -1,315 +1,319 @@
 "use client"
 
-import Link from "next/link"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
-import { Search, Briefcase, Home, Users, BarChart } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { WorkSettleWizard } from "@/components/work-settle-wizard"
+import {
+  ArrowRight,
+  CheckCircle,
+  Users,
+  Globe,
+  Briefcase,
+  Home,
+  BarChart,
+  Clock,
+  Star,
+  MapPin,
+  TrendingUp,
+  Shield,
+  Award,
+} from "lucide-react"
 
 export default function WorkSettlePage() {
+  const [showWizard, setShowWizard] = useState(false)
+
   return (
-    <div className="bg-white text-[#0B1120] min-h-screen">
-      <div className="container py-12">
-        <h1 className="text-3xl md:text-4xl font-bold mb-8 text-[#0B1120]">Work & Settlement Opportunities</h1>
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <section className="relative py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div className="container relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <Badge variant="secondary" className="mb-6 px-4 py-2">
+              <Globe className="w-4 h-4 mr-2" />
+              50+ Countries Available
+            </Badge>
 
-        <div className="flex flex-col md:flex-row gap-4 mb-8">
-          <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
-            <Input
-              type="search"
-              placeholder="Search countries, work visas..."
-              className="pl-10 rounded-md bg-white w-full"
-            />
-          </div>
-          <Button variant="outline" className="bg-white text-[#0B1120] hover:bg-[#0B1120]/5 transition-colors">
-            Clear
-          </Button>
-        </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-balance">Your Global Career Awaits</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <Card className="bg-white border border-[#0B1120]/10 text-[#0B1120]">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <Briefcase className="h-6 w-6 text-blue-600" />
-                </div>
-                <h2 className="text-xl font-bold">Work Opportunities</h2>
-              </div>
-              <p className="mb-4">
-                Explore global work opportunities with our comprehensive visa and job market guidance.
-              </p>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-pretty">
+              Discover work opportunities and settlement pathways worldwide. Our expert-guided assessment helps you find
+              the perfect match for your skills and aspirations.
+            </p>
 
-              <h3 className="font-semibold mb-2">Popular Work Visa Types:</h3>
-              <ul className="space-y-2 mb-4">
-                <li className="flex items-center">
-                  <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                  <span>Skilled Worker Visas</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                  <span>Working Holiday Visas</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                  <span>Entrepreneur & Investor Visas</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                  <span>Intra-Company Transfer Visas</span>
-                </li>
-              </ul>
-
-              <Button className="w-full mt-2 bg-blue-600 text-white hover:bg-blue-600/90">Explore Work Visas</Button>
-            </CardContent>
-          </Card>
-
-          <Card className="bg-white border border-[#0B1120]/10 text-[#0B1120]">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="bg-blue-100 p-3 rounded-full">
-                  <Home className="h-6 w-6 text-blue-600" />
-                </div>
-                <h2 className="text-xl font-bold">Settlement Pathways</h2>
-              </div>
-              <p className="mb-4">
-                Discover permanent residency and citizenship options in countries around the world.
-              </p>
-
-              <h3 className="font-semibold mb-2">Popular Settlement Programs:</h3>
-              <ul className="space-y-2 mb-4">
-                <li className="flex items-center">
-                  <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                  <span>Express Entry (Canada)</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                  <span>Points-Based System (Australia)</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                  <span>EU Blue Card</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                  <span>Investment Migration Programs</span>
-                </li>
-              </ul>
-
-              <Button className="w-full mt-2 bg-blue-600 text-white hover:bg-blue-600/90">
-                Explore Settlement Options
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Button size="lg" className="text-lg px-8 py-6 h-auto" onClick={() => setShowWizard(true)}>
+                Start Your Assessment
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-            </CardContent>
-          </Card>
-        </div>
 
-        <div className="bg-white border border-[#0B1120]/10 rounded-xl p-6 mb-8 shadow-sm">
-          <h2 className="text-2xl font-bold mb-6 text-[#0B1120]">Top Countries for Work & Settlement</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <Button variant="outline" size="lg" className="text-lg px-8 py-6 h-auto bg-transparent">
+                View Success Stories
+              </Button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">98%</div>
+                <div className="text-sm text-muted-foreground">Success Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">15k+</div>
+                <div className="text-sm text-muted-foreground">Happy Clients</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">50+</div>
+                <div className="text-sm text-muted-foreground">Countries</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary">24/7</div>
+                <div className="text-sm text-muted-foreground">Support</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Overview */}
+      <section className="py-16 bg-muted/30">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Our streamlined 8-step process guides you from assessment to settlement
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              {
-                country: "Canada",
-                highlights: "Express Entry, Provincial Nominees",
-                icon: <Users className="h-6 w-6 text-blue-600" />,
-              },
-              {
-                country: "Australia",
-                highlights: "Skilled Migration, 189/190/491 Visas",
-                icon: <Users className="h-6 w-6 text-blue-600" />,
-              },
-              { country: "New Zealand", highlights: "Skilled Migrant Category", icon: <Users className="h-6 w-6 text-blue-600" /> },
-              { country: "Germany", highlights: "EU Blue Card, Job Seeker Visa", icon: <Users className="h-6 w-6 text-blue-600" /> },
-              {
-                country: "United Kingdom",
-                highlights: "Skilled Worker Visa, Global Talent",
-                icon: <Users className="h-6 w-6 text-blue-600" />,
-              },
-              {
-                country: "Singapore",
-                highlights: "Employment Pass, Permanent Residency",
-                icon: <Users className="h-6 w-6 text-blue-600" />,
-              },
-              {
-                country: "United Arab Emirates",
-                highlights: "Golden Visa, Green Visa",
-                icon: <Users className="h-6 w-6 text-blue-600" />,
-              },
-              { country: "Portugal", highlights: "D7 Visa, Golden Visa", icon: <Users className="h-6 w-6 text-blue-600" /> },
+              { step: 1, title: "Get Started", desc: "Begin your journey", icon: CheckCircle },
+              { step: 2, title: "Select Region", desc: "Choose your destination", icon: Globe },
+              { step: 3, title: "Country Selection", desc: "Pick your target country", icon: MapPin },
+              { step: 4, title: "Family Details", desc: "Add travelers info", icon: Users },
+              { step: 5, title: "Skills & Sector", desc: "Define your expertise", icon: Briefcase },
+              { step: 6, title: "Experience Level", desc: "Set your background", icon: TrendingUp },
+              { step: 7, title: "Visa Type", desc: "Choose visa category", icon: Shield },
+              { step: 8, title: "Get Results", desc: "Receive your catalog", icon: Award },
             ].map((item) => (
-              <Link href={`/destinations/${item.country.toLowerCase()}`} key={item.country}>
-                <div className="bg-[#0B1120]/5 p-4 rounded-lg hover:bg-[#0B1120]/10 transition-colors h-full">
-                  <div className="flex items-center gap-3 mb-2">
-                    {item.icon}
-                    <h3 className="font-semibold text-[#0B1120]">{item.country}</h3>
+              <Card key={item.step} className="work-settle-card text-center">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+                    <item.icon className="w-6 h-6 text-primary" />
                   </div>
-                  <p className="text-sm text-[#0B1120]/70">{item.highlights}</p>
-                </div>
-              </Link>
+                  <div className="text-sm font-medium text-primary mb-2">Step {item.step}</div>
+                  <h3 className="font-semibold mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white border border-[#0B1120]/10 rounded-xl p-6 shadow-sm">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-blue-100 p-3 rounded-full">
-                <BarChart className="h-6 w-6 text-blue-600" />
-              </div>
-              <h2 className="text-xl font-bold text-[#0B1120]">In-Demand Skills</h2>
-            </div>
-            <p className="mb-4 text-[#0B1120]/80">
-              Skills that increase your chances of securing work visas and settlement opportunities:
-            </p>
+      <section className="py-16">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Work & Settlement Opportunities</h2>
+              <p className="text-xl text-muted-foreground mb-8">
+                Explore global opportunities with our comprehensive guidance for skilled professionals
+              </p>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <h3 className="font-semibold mb-2 text-[#0B1120]">Technical Skills</h3>
-                <ul className="space-y-2">
-                  <li className="flex items-center">
-                    <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                    <span className="text-[#0B1120]/80">Software Development</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                    <span className="text-[#0B1120]/80">Data Science & AI</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                    <span className="text-[#0B1120]/80">Healthcare Professionals</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                    <span className="text-[#0B1120]/80">Engineering</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2 text-[#0B1120]">Business Skills</h3>
-                <ul className="space-y-2">
-                  <li className="flex items-center">
-                    <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                    <span className="text-[#0B1120]/80">Project Management</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                    <span className="text-[#0B1120]/80">Financial Analysis</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                    <span className="text-[#0B1120]/80">Digital Marketing</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="h-2 w-2 bg-blue-600 rounded-full mr-3"></span>
-                    <span className="text-[#0B1120]/80">Supply Chain Management</span>
-                  </li>
-                </ul>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <Card className="work-settle-card">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 mb-4 bg-secondary/10 rounded-full flex items-center justify-center">
+                      <Briefcase className="w-6 h-6 text-secondary" />
+                    </div>
+                    <h3 className="font-semibold mb-2">Work Visas</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Skilled worker, entrepreneur, and specialty occupation visas
+                    </p>
+                  </CardContent>
+                </Card>
+
+                <Card className="work-settle-card">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 mb-4 bg-secondary/10 rounded-full flex items-center justify-center">
+                      <Home className="w-6 h-6 text-secondary" />
+                    </div>
+                    <h3 className="font-semibold mb-2">Settlement</h3>
+                    <p className="text-sm text-muted-foreground">Permanent residency and citizenship pathways</p>
+                  </CardContent>
+                </Card>
               </div>
             </div>
-          </div>
 
-          <div className="bg-white border border-[#0B1120]/10 rounded-xl p-6">
-            <h2 className="text-xl font-bold mb-4 text-[#0B1120]">Our Services</h2>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <div className="bg-blue-600 p-2 rounded-full mt-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-white"
-                  >
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold">Visa Eligibility Assessment</h3>
-                  <p className="text-sm text-gray-200">
-                    Personalized evaluation of your profile for various work and settlement options.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="bg-blue-600 p-2 rounded-full mt-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-white"
-                  >
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[#0B1120]">Documentation Assistance</h3>
-                  <p className="text-sm text-[#0B1120]/80">
-                    Expert guidance on preparing and submitting visa applications and supporting documents.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="bg-blue-600 p-2 rounded-full mt-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-white"
-                  >
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[#0B1120]">Job Search Support</h3>
-                  <p className="text-sm text-[#0B1120]/80">
-                    Resources and guidance to help you find employment opportunities abroad.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="bg-blue-600 p-2 rounded-full mt-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-white"
-                  >
-                    <path d="M20 6 9 17l-5-5" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-[#0B1120]">Settlement Consultation</h3>
-                  <p className="text-sm text-[#0B1120]/80">
-                    Advice on housing, banking, healthcare, and other aspects of settling in a new country.
-                  </p>
-                </div>
-              </li>
-            </ul>
-            <Button className="w-full mt-6 bg-blue-600 text-white hover:bg-blue-700">Book a Consultation</Button>
+            <div className="space-y-6">
+              <Card className="work-settle-card">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3">
+                    <BarChart className="w-6 h-6 text-primary" />
+                    In-Demand Skills
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <h4 className="font-medium mb-3">Technical</h4>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
+                        <li>• Software Development</li>
+                        <li>• Data Science & AI</li>
+                        <li>• Healthcare</li>
+                        <li>• Engineering</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-medium mb-3">Business</h4>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
+                        <li>• Project Management</li>
+                        <li>• Financial Analysis</li>
+                        <li>• Digital Marketing</li>
+                        <li>• Supply Chain</li>
+                      </ul>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Popular Destinations */}
+      <section className="py-16 bg-muted/30">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Popular Destinations</h2>
+            <p className="text-xl text-muted-foreground">
+              Discover opportunities in the world's most sought-after countries
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: "Canada", programs: "Express Entry, PNP", flag: "🇨🇦", applications: "2.1k+" },
+              { name: "Australia", programs: "SkillSelect, 189/190", flag: "🇦🇺", applications: "1.8k+" },
+              { name: "Germany", programs: "EU Blue Card, Job Seeker", flag: "🇩🇪", applications: "1.5k+" },
+              { name: "New Zealand", programs: "Skilled Migrant", flag: "🇳🇿", applications: "980+" },
+              { name: "United Kingdom", programs: "Skilled Worker", flag: "🇬🇧", applications: "1.2k+" },
+              { name: "Singapore", programs: "Employment Pass", flag: "🇸🇬", applications: "850+" },
+              { name: "Netherlands", programs: "Highly Skilled Migrant", flag: "🇳🇱", applications: "720+" },
+              { name: "Portugal", programs: "D7 Visa, Golden Visa", flag: "🇵🇹", applications: "650+" },
+            ].map((country) => (
+              <Card key={country.name} className="work-settle-card group cursor-pointer">
+                <CardContent className="p-6 text-center">
+                  <div className="text-4xl mb-3">{country.flag}</div>
+                  <h3 className="font-semibold mb-2">{country.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-3">{country.programs}</p>
+                  <div className="flex items-center justify-center gap-1 text-xs text-muted-foreground">
+                    <Users className="w-3 h-3" />
+                    {country.applications} applications
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Success Stories */}
+      <section className="py-16">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
+            <p className="text-xl text-muted-foreground">Real people, real results from our Work & Settle program</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sarah Chen",
+                role: "Software Engineer",
+                country: "Canada",
+                story: "Landed a dream job in Toronto within 6 months of starting the process.",
+                rating: 5,
+              },
+              {
+                name: "Michael Rodriguez",
+                role: "Data Scientist",
+                country: "Australia",
+                story: "Successfully obtained PR through the skilled migration program.",
+                rating: 5,
+              },
+              {
+                name: "Priya Patel",
+                role: "Healthcare Professional",
+                country: "New Zealand",
+                story: "Moved with my family and now working in Auckland's top hospital.",
+                rating: 5,
+              },
+            ].map((story, index) => (
+              <Card key={index} className="work-settle-card">
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-1 mb-4">
+                    {Array(story.rating)
+                      .fill(null)
+                      .map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      ))}
+                  </div>
+                  <p className="text-muted-foreground mb-4 italic">"{story.story}"</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Users className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-medium">{story.name}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {story.role} • {story.country}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-primary text-primary-foreground">
+        <div className="container text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Global Career?</h2>
+          <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+            Join thousands of professionals who've successfully relocated with our expert guidance. Your assessment
+            takes just 10 minutes.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              variant="secondary"
+              className="text-lg px-8 py-6 h-auto"
+              onClick={() => setShowWizard(true)}
+            >
+              Start Free Assessment
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg px-8 py-6 h-auto border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent"
+            >
+              <Clock className="mr-2 h-5 w-5" />
+              Book Consultation
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Wizard Modal */}
+      {showWizard && <WorkSettleWizard onClose={() => setShowWizard(false)} />}
     </div>
   )
 }
