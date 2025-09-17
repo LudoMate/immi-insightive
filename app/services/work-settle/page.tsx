@@ -28,7 +28,6 @@ export default function WorkSettlePage() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="container relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge variant="secondary" className="mb-6 px-4 py-2">
@@ -98,7 +97,7 @@ export default function WorkSettlePage() {
               { step: 7, title: "Visa Type", desc: "Choose visa category", icon: Shield },
               { step: 8, title: "Get Results", desc: "Receive your catalog", icon: Award },
             ].map((item) => (
-              <Card key={item.step} className="work-settle-card text-center">
+              <Card key={item.step} className="text-center hover:shadow-md transition-shadow">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
                     <item.icon className="w-6 h-6 text-primary" />
@@ -123,7 +122,7 @@ export default function WorkSettlePage() {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <Card className="work-settle-card">
+                <Card className="hover:shadow-md transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 mb-4 bg-secondary/10 rounded-full flex items-center justify-center">
                       <Briefcase className="w-6 h-6 text-secondary" />
@@ -135,7 +134,7 @@ export default function WorkSettlePage() {
                   </CardContent>
                 </Card>
 
-                <Card className="work-settle-card">
+                <Card className="hover:shadow-md transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 mb-4 bg-secondary/10 rounded-full flex items-center justify-center">
                       <Home className="w-6 h-6 text-secondary" />
@@ -148,7 +147,7 @@ export default function WorkSettlePage() {
             </div>
 
             <div className="space-y-6">
-              <Card className="work-settle-card">
+              <Card className="hover:shadow-md transition-shadow">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
                     <BarChart className="w-6 h-6 text-primary" />
@@ -204,7 +203,7 @@ export default function WorkSettlePage() {
               { name: "Netherlands", programs: "Highly Skilled Migrant", flag: "🇳🇱", applications: "720+" },
               { name: "Portugal", programs: "D7 Visa, Golden Visa", flag: "🇵🇹", applications: "650+" },
             ].map((country) => (
-              <Card key={country.name} className="work-settle-card group cursor-pointer">
+              <Card key={country.name} className="group cursor-pointer hover:shadow-md transition-shadow">
                 <CardContent className="p-6 text-center">
                   <div className="text-4xl mb-3">{country.flag}</div>
                   <h3 className="font-semibold mb-2">{country.name}</h3>
@@ -252,7 +251,7 @@ export default function WorkSettlePage() {
                 rating: 5,
               },
             ].map((story, index) => (
-              <Card key={index} className="work-settle-card">
+              <Card key={index} className="hover:shadow-md transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-1 mb-4">
                     {Array(story.rating)
