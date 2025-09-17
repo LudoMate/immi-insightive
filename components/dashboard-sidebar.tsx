@@ -4,10 +4,7 @@ import type React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
-  Users,
   FileText,
-  Home,
-  Settings,
   MessageSquare,
   Briefcase,
   Globe,
@@ -17,9 +14,8 @@ import {
   HelpCircle,
   Search,
   CreditCard,
-  ChevronRight,
+  ChevronDown,
   Bell,
-  LogOut,
 } from "lucide-react"
 import {
   Sidebar,
@@ -33,7 +29,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarSeparator,
 } from "@/components/ui/sidebar"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { useState } from "react"
@@ -55,76 +50,41 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
   const isActive = (path: string) => pathname === path
 
   return (
-    <Sidebar variant="inset" {...props} className="bg-white border-gray-200">
-      <SidebarHeader className="space-y-2">
-        <div className="px-4 py-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-            <SidebarInput
-              type="search"
-              placeholder="Quick search..."
-              className="pl-9 w-full bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 focus-visible:ring-[#0066FF] focus-visible:border-[#0066FF] text-sm rounded-lg"
-            />
+    <Sidebar variant="inset" {...props} className="bg-white border-r border-gray-200">
+      <SidebarHeader className="p-4 border-b border-gray-100">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
+            FM
           </div>
+          <div className="flex-1 min-w-0">
+            <div className="font-medium text-gray-900 text-sm">Francoi Mercer</div>
+            <div className="text-xs text-blue-600 font-medium">Premium</div>
+            <div className="text-xs text-gray-500 truncate">xyz@g...</div>
+          </div>
+        </div>
+
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <SidebarInput
+            type="search"
+            placeholder="Quick search..."
+            className="pl-9 w-full bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 focus-visible:ring-blue-500 focus-visible:border-blue-500 text-sm rounded-lg h-9"
+          />
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="px-2">
+      <SidebarContent className="px-3 py-2">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-gray-500 font-medium px-2 text-xs uppercase tracking-wider">
-            Navigation
-          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={isActive("/dashboard")}>
-                  <Link
-                    href="/dashboard"
-                    className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
-                  >
-                    <div className="bg-[#0066FF]/10 p-2 rounded-lg">
-                      <Home className="h-4 w-4 text-[#0066FF]" />
-                    </div>
-                    <span className="text-gray-900 font-medium group-hover:text-[#0066FF]">Dashboard</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={isActive("/applications/status")}>
-                  <Link
-                    href="/applications/status"
-                    className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
-                  >
-                    <div className="bg-[#0066FF]/10 p-2 rounded-lg">
-                      <FileText className="h-4 w-4 text-[#0066FF]" />
-                    </div>
-                    <span className="text-gray-700 group-hover:text-[#0066FF]">Application Status</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={isActive("/profile")}>
-                  <Link
-                    href="/profile"
-                    className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
-                  >
-                    <div className="bg-[#0066FF]/10 p-2 rounded-lg">
-                      <Users className="h-4 w-4 text-[#0066FF]" />
-                    </div>
-                    <span className="text-gray-700 group-hover:text-[#0066FF]">My Profile</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={isActive("/applications/new")}>
                   <Link
                     href="/applications/new"
-                    className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600"
                   >
-                    <div className="bg-[#0066FF]/10 p-2 rounded-lg">
-                      <FileText className="h-4 w-4 text-[#0066FF]" />
-                    </div>
-                    <span className="text-gray-700 group-hover:text-[#0066FF]">New Application</span>
+                    <FileText className="h-4 w-4" />
+                    <span className="font-medium">New Application</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -132,14 +92,12 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
                 <SidebarMenuButton asChild isActive={isActive("/notifications")}>
                   <Link
                     href="/notifications"
-                    className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600"
                   >
-                    <div className="bg-[#0066FF]/10 p-2 rounded-lg">
-                      <Bell className="h-4 w-4 text-[#0066FF]" />
-                    </div>
+                    <Bell className="h-4 w-4" />
                     <div className="flex-1 flex items-center justify-between">
-                      <span className="text-gray-700 group-hover:text-[#0066FF]">Notifications</span>
-                      <span className="bg-[#0066FF] text-white text-xs rounded-full px-2 py-1 font-medium">3</span>
+                      <span className="font-medium">Notifications</span>
+                      <span className="bg-gray-200 text-gray-700 text-xs rounded-full px-2 py-0.5 font-medium">3</span>
                     </div>
                   </Link>
                 </SidebarMenuButton>
@@ -148,8 +106,6 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <SidebarSeparator />
-
         <Collapsible
           open={openGroups.services}
           onOpenChange={() => toggleGroup("services")}
@@ -157,9 +113,9 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
         >
           <SidebarGroup>
             <SidebarGroupLabel asChild>
-              <CollapsibleTrigger className="flex w-full items-center justify-between px-2 py-1">
-                <span className="text-xs font-medium uppercase tracking-wider text-gray-500">Services</span>
-                <ChevronRight className="h-4 w-4 text-gray-400 transition-transform group-data-[state=open]/collapsible:rotate-90" />
+              <CollapsibleTrigger className="flex w-full items-center justify-between px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-gray-700">
+                <span>SERVICES</span>
+                <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
               </CollapsibleTrigger>
             </SidebarGroupLabel>
             <CollapsibleContent>
@@ -169,12 +125,10 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
                     <SidebarMenuButton asChild isActive={isActive("/services/holiday-visa")}>
                       <Link
                         href="/services/holiday-visa"
-                        className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600"
                       >
-                        <div className="bg-[#0066FF]/10 p-2 rounded-lg">
-                          <Globe className="h-4 w-4 text-[#0066FF]" />
-                        </div>
-                        <span className="text-gray-700 group-hover:text-[#0066FF]">Holiday Visa</span>
+                        <Globe className="h-4 w-4" />
+                        <span>Holiday Visa</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -182,12 +136,10 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
                     <SidebarMenuButton asChild isActive={isActive("/services/study-abroad")}>
                       <Link
                         href="/services/study-abroad"
-                        className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600"
                       >
-                        <div className="bg-[#0066FF]/10 p-2 rounded-lg">
-                          <BookOpen className="h-4 w-4 text-[#0066FF]" />
-                        </div>
-                        <span className="text-gray-700 group-hover:text-[#0066FF]">Study Abroad</span>
+                        <BookOpen className="h-4 w-4" />
+                        <span>Study Abroad</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -195,12 +147,10 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
                     <SidebarMenuButton asChild isActive={isActive("/services/work-settle")}>
                       <Link
                         href="/services/work-settle"
-                        className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600"
                       >
-                        <div className="bg-[#0066FF]/10 p-2 rounded-lg">
-                          <Briefcase className="h-4 w-4 text-[#0066FF]" />
-                        </div>
-                        <span className="text-gray-700 group-hover:text-[#0066FF]">Work & Settle</span>
+                        <Briefcase className="h-4 w-4" />
+                        <span>Work & Settle</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -210,8 +160,6 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
           </SidebarGroup>
         </Collapsible>
 
-        <SidebarSeparator />
-
         <Collapsible
           open={openGroups.quickActions}
           onOpenChange={() => toggleGroup("quickActions")}
@@ -219,9 +167,9 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
         >
           <SidebarGroup>
             <SidebarGroupLabel asChild>
-              <CollapsibleTrigger className="flex w-full items-center justify-between">
+              <CollapsibleTrigger className="flex w-full items-center justify-between px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-500 hover:text-gray-700">
                 <span>Quick Actions</span>
-                <ChevronRight className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                <ChevronDown className="h-4 w-4 transition-transform group-data-[state=open]/collapsible:rotate-180" />
               </CollapsibleTrigger>
             </SidebarGroupLabel>
             <CollapsibleContent>
@@ -229,36 +177,50 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
                 <SidebarMenu>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive={isActive("/document-verification")}>
-                      <Link href="/document-verification" className="group">
-                        <Upload className="mr-2 h-4 w-4 text-[#0066FF]" />
-                        <span className="text-gray-900 group-hover:text-[#0066FF]">Upload Documents</span>
+                      <Link
+                        href="/document-verification"
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+                      >
+                        <Upload className="h-4 w-4" />
+                        <span>Upload Documents</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive={isActive("/services/consultation")}>
-                      <Link href="/services/consultation" className="group">
-                        <MessageSquare className="mr-2 h-4 w-4 text-[#0066FF]" />
-                        <span className="text-gray-900 group-hover:text-[#0066FF]">Book Consultation</span>
+                      <Link
+                        href="/services/consultation"
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+                      >
+                        <MessageSquare className="h-4 w-4" />
+                        <span>Book Consultation</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive={isActive("/document-reminders")}>
-                      <Link href="/document-reminders" className="group">
-                        <Clock className="mr-2 h-4 w-4 text-[#0066FF]" />
-                        <span className="text-gray-900 group-hover:text-[#0066FF]">Document Reminders</span>
-                        <span className="ml-auto bg-[#0066FF] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                          2
-                        </span>
+                      <Link
+                        href="/document-reminders"
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+                      >
+                        <Clock className="h-4 w-4" />
+                        <div className="flex-1 flex items-center justify-between">
+                          <span>Document Reminders</span>
+                          <span className="bg-gray-200 text-gray-700 text-xs rounded-full px-2 py-0.5 font-medium">
+                            2
+                          </span>
+                        </div>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive={isActive("/payments")}>
-                      <Link href="/payments" className="group">
-                        <CreditCard className="mr-2 h-4 w-4 text-[#0066FF]" />
-                        <span className="text-gray-900 group-hover:text-[#0066FF]">Payments</span>
+                      <Link
+                        href="/payments"
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+                      >
+                        <CreditCard className="h-4 w-4" />
+                        <span>Payments</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -269,45 +231,30 @@ export function DashboardSidebar({ className, ...props }: React.ComponentProps<t
         </Collapsible>
       </SidebarContent>
 
-      <SidebarFooter className="px-2 pb-4">
+      <SidebarFooter className="px-3 pb-4 border-t border-gray-100 pt-4">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={isActive("/profile/settings")}>
               <Link
                 href="/profile/settings"
-                className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600"
               >
-                <div className="bg-[#0066FF]/10 p-2 rounded-lg">
-                  <Settings className="h-4 w-4 text-[#0066FF]" />
+                <div className="w-6 h-6 bg-gray-800 rounded-full flex items-center justify-center text-white text-xs font-medium">
+                  N
                 </div>
-                <span className="text-gray-700 group-hover:text-[#0066FF]">Settings</span>
+                <span>Settings</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={isActive("/help")}>
-              <Link href="/help" className="group flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-[#0066FF]/5">
-                <div className="bg-[#0066FF]/10 p-2 rounded-lg">
-                  <HelpCircle className="h-4 w-4 text-[#0066FF]" />
-                </div>
-                <span className="text-gray-700 group-hover:text-[#0066FF]">Help & Support</span>
+              <Link
+                href="/help"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-blue-50 text-gray-700 hover:text-blue-600"
+              >
+                <HelpCircle className="h-4 w-4" />
+                <span>Help & Support</span>
               </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              onClick={() => {
-                document.cookie = "auth_session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
-                window.location.href = "/"
-              }}
-            >
-              <button className="w-full flex items-center gap-3 px-2 py-2 rounded-lg hover:bg-red-50 group">
-                <div className="bg-red-100 p-2 rounded-lg group-hover:bg-red-100">
-                  <LogOut className="h-4 w-4 text-red-600" />
-                </div>
-                <span className="text-gray-700 group-hover:text-red-600">Log Out</span>
-              </button>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
