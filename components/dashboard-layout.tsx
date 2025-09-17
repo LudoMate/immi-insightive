@@ -156,8 +156,29 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         </header>
 
         <main className="flex-1 w-full bg-gray-50 overflow-y-auto">
-          <div className="p-6 max-w-full">{children}</div>
+          <div className="p-3 sm:p-4 lg:p-6 max-w-full">{children}</div>
         </main>
+
+        <footer className="bg-white border-t border-gray-200 px-4 sm:px-6 py-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4 text-sm text-gray-600">
+              <span>© 2024 Insightive Immigration</span>
+              <span className="hidden sm:inline">•</span>
+              <span className="hidden sm:inline">All rights reserved</span>
+            </div>
+            <div className="flex items-center gap-4 text-sm">
+              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-blue-600 p-0 h-auto">
+                Privacy Policy
+              </Button>
+              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-blue-600 p-0 h-auto">
+                Terms of Service
+              </Button>
+              <Button variant="ghost" size="sm" className="text-gray-600 hover:text-blue-600 p-0 h-auto">
+                Support
+              </Button>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   )
